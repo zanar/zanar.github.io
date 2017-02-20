@@ -24,15 +24,7 @@
 
 		{% if site.github.is_user_page %}
 		    <p class="view">- 
-			<!-- <a href="{{ site.github.owner_url }}">GitHub</a> -->
-			{% assign author = site.data.members[site.github.owner_name] %}
-			{% for kv in author %}
-			    {% if site.data.links["author"] contains kv[0] and !(kv[1] == "" or kv[1] == nil) %}
-				{% assign lnk_head = site.data.links[kv[0]].link %}
-				{% assign lnk_dscr = site.data.links[kv[0]].descr % }
-				<a href="{{ lnk_head }}{{ kv[1] }}">{{ lnk_dscr }}</a> - 
-			    {% endif %}
-			{% endfor %}
+			<a href="{{ site.github.owner_url }}">GitHub</a>
 		    </p>
 		{% endif %}
 
