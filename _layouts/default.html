@@ -24,7 +24,11 @@
 
 		{% if site.github.is_user_page %}
 		    <p class="view">- 
-			<a href="{{ site.github.owner_url }}">GitHub</a>
+			<a href="{{ site.github.owner_url }}">GitHub</a> - 
+			{% assign author = site.data.members[site.github.owner_name] %}
+			{% if author.mail == "" or author.mail == nil %}
+			    <a href="mailto:{{author.mail}}">e-mail</a> - 
+			{% endif %}
 		    </p>
 		{% endif %}
 
