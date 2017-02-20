@@ -20,7 +20,7 @@ permalink: /resume/
 		    since {{ xp.start }}  
 		{% end %}
 	    </td>
-	    <td style="font-weight: bold;>{{ xp.job }}</td>
+	    <td style="font-weight: bold;">{{ xp.job }}</td>
 	    <td>{{ xp.where }}</td>
 	</tr>
 	<tr>
