@@ -39,7 +39,7 @@
 		    - <!--<a href="{{ site.github.owner_url }}">GitHub</a> - -->
 		    {% assign author = site.data.members[site.github.owner_name] %}
 		    {% for lnk in author.links %}
-			{% if lnk.author %}
+			{% if lnk.author == true %}
 			    <a href="{{ lnk.href }}">{{ lnk.descr }}</a> - 
 			{% endif %}
 		    {% endfor %}
