@@ -13,5 +13,5 @@ In my free time, I realy enjoy a motorbike riding or sharing a beer with friends
 
 ## Contact
 
-- [Github]({{ site.github.owner_url }})
+- [Github](https://github.com/zanar)
 - [e-mail](mailto:zanar.dev@protonmail.com)
