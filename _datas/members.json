@@ -8,17 +8,17 @@
 	    {
 		"descr": "GitHub",
 		"href": "https://github.com/zanar",
-		"author": true
+		"author": "yes"
 	    },
 	    {
 		"descr": "e-mail",
 		"href": "mailto:zanar.dev@protonmail.com",
-		"author": true
+		"author": "yes"
 	    },
 	    {
 		"descr": "Web",
 		"href": "https://zanar.github.io",
-		"author": false
+		"author": "no"
 	    }
 	]
     }
