@@ -40,7 +40,7 @@
 		    {% assign author = site.data.members[site.github.owner_name] %}
 		    {% for lnk in author.links %}
 			{% if lnk.author == "yes" %}
-			    <a href="{{ lnk.href }}">{{ lnk.descr }}</a> - 
+			<a href="{{ lnk.href }}">{{ lnk.descr }}</a> - 
 			{% endif %}
 		    {% endfor %}
 		    <!--{% if author.mail == "" or author.mail == nil %}
