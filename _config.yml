@@ -1,5 +1,9 @@
 theme: jekyll-theme-minimal
+baseurl: ""
 title: ZANARDI Bruno
 description: >
   Software Developper<br/>
-  <a href="resume">Resume</a>
+  <ul>
+    <li><a href="{{ site.baseurl }}"Home</a></li>
+    <li><a href="resume">Resume</a></li>
+  </ul>
