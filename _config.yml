@@ -3,5 +3,5 @@ baseurl: ""
 title: ZANARDI Bruno
 description: >
   Software Developper<br/><br/>
-  - <a href="{{ site.baseurl }}"Home</a><br/>
-  - <a href="resume">Resume</a><br/><br/>
+  <a href="{{ site.baseurl }}"Home</a><br/>
+  <a href="resume">Resume</a><br/><br/>
