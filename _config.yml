@@ -1,4 +1,4 @@
 theme: jekyll-theme-minimal
 title: ZANARDI Bruno
 description: > Software Developper
-[Resume](resume)
+<a href="resume">Resume</a>
