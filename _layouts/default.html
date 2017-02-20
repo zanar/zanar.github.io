@@ -35,14 +35,11 @@
 			<a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ github_name }}</small></a>
 			<br/><br/>Author:</br><br/>
 		    {% endif %}
-		    | <!--<a href="{{ site.github.owner_url }}">GitHub</a> - -->
 		    {% assign author = site.data.members[site.github.owner_name] %}
+		    | 
 		    {% for lnk in author.links %}
 			{% if lnk.author == "yes" %}<a href="{{ lnk.href }}">{{ lnk.descr }}</a> | {% endif %}
 		    {% endfor %}
-		    <!--{% if author.mail == "" or author.mail == nil %}
-			<a href="mailto:{{author.mail}}">e-mail</a> - 
-		    {% endif %}-->
 		</p>
 	    
 	    </header>
