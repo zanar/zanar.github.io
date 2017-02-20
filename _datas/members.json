@@ -4,6 +4,22 @@
 	"github": "zanar",
 	"sweb": "zanar.github.io",
 	"mail": "zanar.dev@protonmail.com",
-	"linkedin: ""
+	"links": [
+	    {
+		"descr": "GitHub",
+		"href": "https://github.com/zanar",
+		"author": true
+	    },
+	    {
+		"descr": "e-mail",
+		"href": "mailto:zanar.dev@protonmail.com",
+		"author": true
+	    },
+	    {
+		"descr": "Web",
+		"href": "https://zanar.github.io",
+		"author": false
+	    }
+	]
     }
 }
