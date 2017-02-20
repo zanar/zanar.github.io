@@ -1,8 +1,3 @@
----
-layout: default
-title: ZANARDI Bruno
----
-
 ## About
 
 Hi, I'm Bruno. I'm a software developer in [Grenoble, France](https://en.wikipedia.org/wiki/Grenoble) and I've been building software for over seven years. I really like Python and Java, and Linux is my OS of choice.  
