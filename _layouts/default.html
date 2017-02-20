@@ -31,6 +31,8 @@
 				{% assign lnk_head = site.data.links[kv[0]].link %}
 				{% assign lnk_dscr = site.data.links[kv[0]].descr % }
 				<a href="{{ lnk_head }}{{ kv[1] }}">{{ lnk_dscr }}</a> - 
+			    {% endif %}
+			{% endfor %}
 		    </p>
 		{% endif %}
 
