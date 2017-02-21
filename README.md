@@ -9,4 +9,5 @@ In my free time, I realy enjoy a motorbike riding or sharing a beer with friends
 ## Contact
 
 - [Github](https://github.com/zanar)
+- [LinkedIn](linkedin.com/in/bruno-zanardi-7818bb139)
 - [e-mail](mailto:zanar.dev@protonmail.com)
