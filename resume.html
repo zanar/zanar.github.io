@@ -3,6 +3,8 @@ layout: default
 premalink: /resume_h/
 ---
 
+<div></div>
+
 <!--<table>
     {% for xp in site.data.resume.experience %}
 	<tr>
@@ -28,10 +30,3 @@ premalink: /resume_h/
 	</tr>
     {% endfor %}
 </table>-->
-
-<div>
-	{% assign resume = site.data.resume %}
-	{% for xp in resume.experience %}
-		{{ xp.company }}<br/>
-	{% endfor %}
-</div>
