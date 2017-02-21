@@ -10,13 +10,15 @@ permalink: /resume/
 
 ### Experience
 
-Here is the list of all my professionnal experiences
+-------------------------------
 
 <div>
   {% for post in site.posts %}
     {% if post.category == "exp" %}
-      <span style="font-weight: bold; font-style: italic;">{{ post.title }}</span><br/>
-      {{ post.content }}<br/><br/>
+      <div style="border-bottom: 1px solid #eee; padding-bottom: 0.3em;">
+        <span style="font-weight: bold; font-style: italic;">{{ post.title }}</span><br/>
+        {{ post.content }}<br/>
+      </div>
     {% endif %}
   {% endfor %}
 </div>
