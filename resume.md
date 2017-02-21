@@ -40,3 +40,15 @@ permalink: /resume/
   {% endfor %}
 </div>
 
+### Skills
+
+-------------------------------
+
+<div>
+  {% for post in sit.posts %}
+    {% if post.category == "skl" %}
+      <span style="font-weight: bold;">{{ post.title }}</span><br/>
+      {{ post.content }}<br/><br/>
+    {% endif %}
+  {% endfor %}
+</div>
