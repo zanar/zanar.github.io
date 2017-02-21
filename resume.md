@@ -31,7 +31,7 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div>
+</div><br/><br/>
 
 ### Education
 
@@ -44,7 +44,7 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div>
+</div><br/><br/>
 
 ### Skills
 
@@ -57,4 +57,4 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div>
+</div><br/><br/>
