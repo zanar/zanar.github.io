@@ -12,9 +12,9 @@ permalink: /resume/
 
 -------------------------------
 
- | | 
-:---: | :---: | :---:
-[Experience](#experience) | [Education](#education) | [Skills](#skills)
+| | | |
+| :---: | :---: | :---: |
+| [Experience](#experience) | [Education](#education) | [Skills](#skills) |
 
 ### Experience
 
