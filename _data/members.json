@@ -5,21 +5,25 @@
 	"sweb": "zanar.github.io",
 	"mail": "zanar.dev@protonmail.com",
 	"links": [
-	    {
-		"descr": "GitHub",
-		"href": "https://github.com/zanar",
-		"author": "yes"
-	    },
-	    {
-		"descr": "e-mail",
-		"href": "mailto:zanar.dev@protonmail.com",
-		"author": "yes"
-	    },
-	    {
-		"descr": "Web",
-		"href": "https://zanar.github.io",
-		"author": "no"
-	    }
-	]
+			{
+				"descr": "GitHub",
+				"href": "https://github.com/zanar",
+				"author": "yes"
+			},
+			{
+				"descr": "e-mail",
+				"href": "mailto:zanar.dev@protonmail.com",
+				"author": "yes"
+			},
+			{
+				"descr": "Web",
+				"href": "https://zanar.github.io",
+				"author": "no"
+			},
+			{
+				"descr": "LinkedIn",
+				"href": "linkedin.com/in/bruno-zanardi-7818bb139",
+				"author": "yes"
+		]
     }
 }
