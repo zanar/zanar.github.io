@@ -34,7 +34,7 @@ permalink: /resume/
 <div>
   {% for post in site.posts %}
     {% if post.category == "edu" %}
-      <span style="font-weight: bold;">{{ post.end }} > {{ post.title }}</span><br/>
+      <span style="font-weight: bold;">{{ post.when }} > {{ post.title }}</span><br/>
       {{ post.content }}<br/><br/>
     {% endif %}
   {% endfor %}
