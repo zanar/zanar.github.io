@@ -45,7 +45,7 @@ permalink: /resume/
 -------------------------------
 
 <div>
-  {% for post in sit.posts %}
+  {% for post in site.posts %}
     {% if post.category == "skl" %}
       <span style="font-weight: bold;">{{ post.title }}</span><br/>
       {{ post.content }}<br/><br/>
