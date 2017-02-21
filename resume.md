@@ -15,7 +15,8 @@ Here is the list of all my professionnal experiences
 <div>
   {% for post in site.posts %}
     {% if post.category == "exp" %}
-      {{ post.title }}<br/>
+      <span style="font-weight: bold; font-style: italic;">{{ post.title }}</span><br/>
+      {{ post.content }}<br/><br/>
     {% endif %}
   {% endfor %}
 </div>
