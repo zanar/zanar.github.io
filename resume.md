@@ -17,12 +17,26 @@ permalink: /resume/
     {% if post.category == "exp" %}
       <span style="font-weight: bold;">
       {% if post.end == "" or post.end == nil %}
-        since {{ post.start }}
+        since {{ post.start }} >
       {% else %}
-        {{ post.start }} - {{ post.end }}
+        {{ post.start }} - {{ post.end }} >
       {% endif %}
-      > {{ post.title }} - {{ post.company }} > {{ post.where }}</span><br/>
+      {{ post.title }} - {{ post.company }} > {{ post.where }}</span><br/>
       {{ post.content }}<br/><br/>
     {% endif %}
   {% endfor %}
 </div>
+
+### Education
+
+-------------------------------
+
+<div>
+  {% for post in site.posts %}
+    {% if post.category == "edu" %}
+      <span style="font-weight: bold;">{{ post.end }} > {{ post.title }}</span><br/>
+      {{ post.content }}<br/><br/>
+    {% endif %}
+  {% endfor %}
+</div>
+
