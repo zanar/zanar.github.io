@@ -28,7 +28,7 @@ permalink: /resume/
         {{ post.start }} - {{ post.end }} >
       {% endif %}
       {{ post.title }} - {{ post.company }} > {{ post.where }}</span><br/>
-      {{ post.content }}<br/><br/>
+      {{ post.content }}
     {% endif %}
   {% endfor %}
 </div>
