@@ -11,3 +11,11 @@ permalink: /resume/
 ### Experience
 
 Here is the list of all my professionnal experiences
+
+<div>
+  {% for post in site.posts %}
+    {% if post.category == "exp" %}
+      {{ post.title }}<br/>
+    {% endif %}
+  {% endfor %}
+</div>
