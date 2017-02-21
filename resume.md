@@ -13,6 +13,7 @@ permalink: /resume/
 -------------------------------
 
 [Experience](#experience) - [Education](#education) - [Skills](#skills)
+<br/><br/>
 
 ### Experience
 
