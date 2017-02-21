@@ -41,7 +41,7 @@ permalink: /resume/
   {% for post in site.posts %}
     {% if post.category == "edu" %}
       <span style="font-weight: bold;">{{ post.when }} > {{ post.title }}</span><br/>
-      {{ post.content }}<br/><br/>
+      {{ post.content }}
     {% endif %}
   {% endfor %}
 </div>
@@ -54,7 +54,7 @@ permalink: /resume/
   {% for post in site.posts %}
     {% if post.category == "skl" %}
       <span style="font-weight: bold;">{{ post.title }}</span><br/>
-      {{ post.content }}<br/><br/>
+      {{ post.content }}
     {% endif %}
   {% endfor %}
 </div>
