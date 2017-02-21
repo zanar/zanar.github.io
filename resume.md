@@ -15,6 +15,11 @@ permalink: /resume/
 <div>
   {% for post in site.posts %}
     {% if post.category == "exp" %}
+      {% if post.end == "" or post.end == nil %}
+        since {{ post.start }}
+      {% else %}
+        {{ post.start }} - {{ post.end }}
+      {% endif %}
       <span style="font-weight: bold; font-style: italic;">{{ post.title }}</span><br/>
       {{ post.content }}<br/><br/>
     {% endif %}
