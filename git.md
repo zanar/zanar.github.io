@@ -38,3 +38,15 @@ Just a little help about [Git](https://git-scm.com/) to start well or discover n
     {% endif %}
   {% endfor %}
 </ol>
+
+--------------------------------
+### Commandes
+
+<ol>
+  {% assign sortedPosts = site.categories.git | sort: 'title' %}
+  {% for post in sortedPosts %}
+    {% if post.categories contains 'cmd' and post.tags contains 'def' %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ol>

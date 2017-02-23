@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="post">
+    {% capture cmd%}`{{ page.title }}`{% endcapture %}
+    <h2>Git command <a href="{{ page.man }}">{{ cmd }}</a></h2>
+    
+    <h3>Definition</h3>
+    {{ content }}
+    
+    {% for rp in site.categories.git %}
+	{% if rp.title == page.title and rp.tags contains 'basic' %}
+	    <h3>Basic usage</h3>
+	    {{ rp.content | markdownify }}
+	{% endif %}
+    {% endfor %}
+    
+    {% for rp in site.categories.git %}
+	{%if rp.title == page.title and rp.tags contains 'advanced' %}
+	    <h3>Advanced usage</h3>
+	    {{ rp.content | markdownify }}
+	{% endif %}
+    {% endfor %}
+    
+    {% for rp in site.categories.git %}
+	{%if rp.title == page.title and rp.tags contains 'expert' %}
+	    <h3>Expert usage</h3>
+	    {{ rp.content | markdownify }}
+	{% endif %}
+    {% endfor %}
+</div>

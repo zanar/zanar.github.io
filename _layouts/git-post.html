@@ -55,7 +55,7 @@ layout: default
 	    {% for fn in page.tags %}
 		{% for rp in site.categories.git %}
 		    {% if rp.tags contains page.level and rp.categories contains fn %}
-			<a href="{{ rp.man }}"><h3 id="r_{{ fn }}">{{ rp.title }}</h3></a>
+			<a href="/git/cmd/{{ rp.title }}.html"><h3 id="r_{{ fn }}">{{ rp.title }}</h3></a>
 			<div>{{ rp.content | markdownify }}</div>
 		    {% endif %}
 		{% endfor %}
