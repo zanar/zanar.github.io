@@ -10,10 +10,10 @@ permalink: /resume/
 - Marital Status: Single
 - Interests: Technology, Motorbike, Sports
 
--------------------------------
-
 [Experience](#experience) - [Education](#education) - [Skills](#skills)
-<br/><br/>
+
+-------------------------------
+<br/>
 
 ### Experience
 
@@ -32,7 +32,7 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div><br/><br/>
+</div><br/>
 
 ### Education
 
@@ -45,7 +45,7 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div><br/><br/>
+</div><br/>
 
 ### Skills
 
@@ -58,4 +58,4 @@ permalink: /resume/
       {{ post.content }}
     {% endif %}
   {% endfor %}
-</div><br/><br/>
+</div><br/>

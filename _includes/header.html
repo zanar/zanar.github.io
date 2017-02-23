@@ -1,0 +1,30 @@
+<header>
+    <h1 style="color:#FFFFFF">{{ site.title | default: site.github.repository_name }}</h1>
+    <p class="view">
+	{{ site.description | default: site.github.project_tagline }}<br/>
+
+	{% if site.github.is_project_page and site.show_downloads %}
+	    <ul>
+		<li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
+		<li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
+		<li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
+	    </ul>
+	{% endif %}
+	
+	{% if site.github.is_project_page and !site.show_downloads %}
+	    <a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ github_name }}</small></a>
+	    <br/><br/>Author:</br><br/>
+	{% endif %}
+	
+	{% include author.html %}
+	
+	<p class="view">
+	    {% assign i = 0 %}
+	    {% for p in site.html_pages reversed %}
+		<a href="{{ p.url }}">{{ p.title }}</a><br/>
+		{% assign i = i | plus: 1 %}
+		{% if i == 2 %}<br/>{% endif %}
+	    {% endfor %}
+	</p>
+    </p>
+</header>
