@@ -1,0 +1,103 @@
+---
+layout: git-post
+date: 2017-02-24 07:54:10 +0100
+title: "Tagging versions - Navigate"
+categories: git howto repository sources
+tags: tag checkout
+level: basic
+permalink: /git/basic/tag
+---
+
+Tagging is usefull to identify versions, branch start or all others ideas you will have.  
+  
+Put a tag to the current `HEAD` is realy simple:
+
+    $ git tag <tagname>
+
+that's it!  
+You can also add a message with the tag:
+
+    $ git tag <tagname> -m "message"
+
+  
+If you want to delete a tag, it's as easy as create it:
+
+    $ git tag -d <tagname>
+
+And list all tags in a branch is simpler:
+
+    $ git tag
+
+Now you can easly navigate between tags, start branches or try changes with the next command (branches will be explain in next posts.).
+
+    $ git checkout <tagname>
+
+If you configured the `hist` alias as described in the first post, you will be able to see all tags in the output. Usefull, isn't it?
+
+What happend when you use `git checkout`? Let's see a short example. The repository can be described with this "schematic":
+
+            HEAD (refers to 'master')
+                |
+                v
+    a --- b --- c 'master' (refers to c)
+          ^
+          |
+        tag 'v1' (refers to b)
+
+Work in progress, a new commit is added:
+
+    $ edit; git add; git commit;
+    
+                  HEAD (refers to 'master')
+                      |
+                      v
+    a --- b --- c --- d 'master' (refers to d)
+          ^
+          |
+        tag 'v1' (refers to b)
+
+But something is wrong, or a new idea should be try on 'v1'. Then:
+
+    $ git checkout v1       # or
+    $ git checkout b
+    
+      HEAD (refers to b)
+          |
+          v
+    a --- b --- c --- d 'master' (refers to d)
+          ^
+          |
+        tag 'v1' (refers to b)
+
+You can work exacly as if you where at `HEAD`
+
+    $ edit; git add; git commit;
+    
+       HEAD (refers to e)
+           |
+           v
+           e
+          /
+    a --- b --- c --- d 'master' (refers to d)
+          ^
+          |
+        tag 'v1' (refers to b)
+    
+    $ edit; git add; git commit;
+    
+             HEAD (refers to f)
+                 |
+                 v
+           e --- f
+          /
+    a --- b --- c --- d 'master' (refers to d)
+          ^
+          |
+        tag 'v1' (refers to b)
+
+but remember, all your commits (here `e` and `f`) would be lost if you move with `git checkout` to anywhere else. In fact, Git create a "temporary" branch for your new commits.  
+To keep the new commits, you can use *when you still are at `f`*:
+
+    $ git tag <tagname>
+
+or explicitly create a new branch, as you will learn it soon.
