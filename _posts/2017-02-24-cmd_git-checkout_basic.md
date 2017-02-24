@@ -22,3 +22,9 @@ man: https://www.kernel.org/pub/software/scm/git/docs/git-checkout.html
 > 
     $ git checkout          # or
     $ git checkout master
+
+<div></div>
+
+> Go back to `HEAD` for a file
+> 
+    $ git checkout <file>
