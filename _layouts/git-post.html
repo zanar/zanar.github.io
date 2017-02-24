@@ -18,8 +18,6 @@ layout: default
             document.getElementById(id).style.display = "none";
         }
     </script>
-    <h2>How To: {{ page.title }}</h2>
-    <br/>
     {% assign fn_count = 0 %}
     {% for fn in page.tags %}
         {% for rp in site.categories.git %}
@@ -28,6 +26,10 @@ layout: default
 	    {% endif %}
 	{% endfor %}
     {% endfor %}
+    
+    <h2>How To: {{ page.title }}</h2>
+       
+    {% include prevnext.html order=0 %}
     
     {% if fn_count > 0 %}
 	related functions:<br/>
@@ -49,7 +51,11 @@ layout: default
         {{ content }}
     </div>
     
-    {% if fn_count > 0 %}
+    {% if fn_count == 0 %}
+	{% include prevnext.html order=3 %}
+    {% else %}
+	{% include prevnext.html order=1 %}
+	
 	<div id="fn_remind">
 	    <h2>Reminder</h2>
 	    {% for fn in page.tags %}
@@ -61,5 +67,7 @@ layout: default
 		{% endfor %}
 	    {% endfor %}
 	</div>
+	
+	{% include prevnext.html order=2 %}
     {% endif %}
 </div>

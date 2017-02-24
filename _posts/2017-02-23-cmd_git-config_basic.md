@@ -18,7 +18,7 @@ man: https://www.kernel.org/pub/software/scm/git/docs/git-config.html
 
 <div></div> 
 
-> Add / modify a value to deposit configuration
+> Add / modify a value to repository configuration
 > 
     $ git config --local <var> <value>
 

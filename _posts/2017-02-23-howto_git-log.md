@@ -2,7 +2,7 @@
 layout: git-post
 date: 2017-02-23 16:50:25 +0100
 title: "Show commit logs"
-categories: git howto deposit
+categories: git howto repository
 tags: log
 level: basic
 permalink: /git/basic/log

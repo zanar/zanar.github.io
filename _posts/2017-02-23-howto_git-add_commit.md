@@ -2,15 +2,15 @@
 layout: git-post
 date: 2017-02-23 16:33:44 +0100
 title: "Add untracked files - Save changes"
-categories: git howto deposit sources
+categories: git howto repository sources
 tags: add commit status
 level: basic
 permalink: /git/basic/add_commit
 ---
 
-Your project and your deposit are created. Now it's time to say to Git which files must be tracked and save changes.
+Your project and your repository are created. Now it's time to say to Git which files must be tracked and save changes.
 
-First of all, a usefull command to know your local deposit state:
+First of all, a usefull command to know your local repository state:
 
     $ git status
 
@@ -37,7 +37,7 @@ Git will show you untracked files, modified files and/or changes to be committed
     #        <file_4>
     #        <file_5>
 
-The `Untracked files` section shows you all files found in your local deposit which doesn't exist in remote deposit.
+The `Untracked files` section shows you all files found in your local repository which doesn't exist in remote repository.
 The `Changed but not updated` section shows you all locally modified files which won't be commited
 The `Changes to be commited` section shows you modified files which will be commited
 

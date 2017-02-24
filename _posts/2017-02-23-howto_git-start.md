@@ -1,14 +1,14 @@
 ---
 layout: git-post
 date: 2017-02-23 16:18:22 +0100
-title: "Start a (local) deposit"
-categories: git howto deposit
+title: "Start a (local) repository"
+categories: git howto repository
 tags: init clone
 level: basic
 permalink: /git/basic/start
 ---
 
-Your Git is well configured, it's time to work! There is two big ways to start a deposit:
+Your Git is well configured, it's time to work! There is two big ways to start a repository:
 
 - It's a new project or an untracked project
 
@@ -16,9 +16,9 @@ Go to your project directory and just run:
 
     $ git init
 
-That's it! A new deposit has been created. If your project already have sources, you will have to add them.
+That's it! A new repository has been created. If your project already have sources, you will have to add them.
 
-- The project already has a remote deposit
+- The project already has a remote repository
 
 Go to your project directory and run:
 
