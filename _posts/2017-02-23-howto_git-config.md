@@ -18,7 +18,7 @@ Here is a list of usefull commands to have a nice Git configuration. I'll explai
     $ git config --global diff.mnemonicPrefix true
     $ git config --global push.default upstream
     $ git config --global log.abbrevCommit true
-    $ git config --global alias.hist 'log --pretty=format:"%h - %d%s [%an] (%ar - %ad)" --graph --date=short --all'
+    $ git config --global alias.hist 'log --pretty=format:\"%h - %d %s (%cr) <%an>\" --graph --date=relative --all'
 
 Now, some explainations:
 
@@ -34,3 +34,9 @@ Now, some explainations:
 > *Remember*  
 > There is hundreds of configuration variables, I just speak about some usefull here. For more informations, see `git help config` or the `CONFIGURATION` section of `git help <cmd>` where &lt;cmd&gt; is the command you want to configure
 
+As a gift, two better aliases for `log`:
+
+    $ git config --global alias.hist 'log --graph --date=relative --all --pretty=format:\"%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"'
+    $ git config --global alias.lg 'log --max-count=30 --graph --date=relative --all --pretty=format:\"%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"'
+
+`hist` will show exact the same than the previous, but colored and `lg` too, but only the 30 last posts.
