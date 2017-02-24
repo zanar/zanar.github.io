@@ -6,6 +6,6 @@ tags: advanced
 man: https://www.kernel.org/pub/software/scm/git/docs/git-clone.html
 ---
 
-> Clones remote repository locally then navigate to <branch>
+> Clones remote repository locally then navigate to &lt;branch&gt;
 > 
 	$ git clone -b <branch> -- <path/to/remote.git>
