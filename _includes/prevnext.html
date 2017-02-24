@@ -1,10 +1,4 @@
-{% if include.order == 2 %}
-    <div style="text-align: center; border-top: 1px solid #ccc; padding-top: 1em;">
-{% elsif include.order < 2 %}
-    <div style="text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 1em;">
-{% else %}
-    <div style="text-align: center;">
-{% endif %}
+<div style="text-align: center;{% if include.order == 2 %} border-top: 1px solid #ccc; padding-top: 1em;{% elsif include.order < 2 %}  border-bottom: 1px solid #ccc; padding-bottom: 1em; {% endif %}">
     {% assign next = nil %}
     {% for np in site.categories.howto %}
 	{% if np.categories contains 'git' and np.title != page.title %}
@@ -25,21 +19,21 @@
 	{% endif %}
     {% endfor %}
     
-    <span style="display: inline-block; float: left;">
+    <span style="display: inline-block; float: left; width: 80px; background-color: #d8d8d8">
 	{% if prev != nil %}
-	    <a href="{{ prev.url }}" title="{{ prev.title }}">prev.</a>
+	    <a href="{{ prev.url }}" title="{{ prev.title }}">previous</a>
 	{% else %}
 	    <a href="/git/" title="back to Git Blog">home</a>
 	{% endif %}
     </span>
     
     {% unless include.order == 0 %}
-	<a href="{{ page.url }}">top</a>
+	<a style="display: inline-block; width: 80px; background-color: #d8d8d8" href="{{ page.url }}">top</a>
     {% else %}
 	<span style="display: inline-block;"> </span>
     {% endunless %}
     
-    <span style="display: inline-block; float: right;">
+    <span style="display: inline-block; float: right; width: 80px; background-color: #d8d8d8">
 	{% if next != nil %}
 	    <a href="{{ next.url }}" title="{{ next.title }}">next</a>
 	{% else %}
