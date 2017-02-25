@@ -1,7 +1,7 @@
 <div style="text-align: center;{% if include.order == 2 %} border-top: 1px solid #ccc; padding-top: 1em;{% elsif include.order < 2 %}  border-bottom: 1px solid #ccc; padding-bottom: 1em; {% endif %}">
     {% assign next = nil %}
     {% for np in site.categories.howto %}
-	{% if np.categories contains 'git' and np.title != page.title %}
+	{% if np.categories contains 'git' and np.title != page.title and np.level == page.level %}
 	    {% assign next = np %}
 	{% endif %}
 	{% if np.title == page.title %}
@@ -11,7 +11,7 @@
     
     {% assign prev = nil %}
     {% for pp in site.categories.howto reversed %}
-	{% if pp.categories contains 'git' and pp.title != page.title %}
+	{% if pp.categories contains 'git' and pp.title != page.title and pp.level == page.level %}
 	    {% assign prev = pp %}
 	{% endif %}
 	{% if pp.title == page.title %}

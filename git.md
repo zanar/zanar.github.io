@@ -42,11 +42,31 @@ Just a little help about [Git](https://git-scm.com/) to start well or discover n
 --------------------------------
 ### Commandes
 
-<ul>
   {% assign sortedPosts = site.categories.git | sort: 'title' %}
+  {% assign def_count = 0%}
+  {% for post in sortedPosts %}
+    {% if post.categories contains 'cmd' and post.tags contains 'def' %}
+      {% assign def_count = def_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign nb_def = def_count | divided_by: 5 %}
+  {% assign tot_def = nb_def | times: 5 %}
+  {% if tot_def != def_count %}
+    {% assign nb_def = nb_def | plus: 1 %}
+  {% endif %}
+
+  {% assign i = 0 %}
+
+<table style="border: 0px solid black;"><tr><td style="background-color: transparent;"><ul>
   {% for post in sortedPosts %}
     {% if post.categories contains 'cmd' and post.tags contains 'def' %}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% assign i = i | plus: 1 %}
+      {% if i == nb_def %}
+	</ul></td><td style="background-color: transparent;"><ul>
+	{% assign i = 0 %}
+      {% endif %}
     {% endif %}
   {% endfor %}
-</ul>
+</ul></td></tr></table>

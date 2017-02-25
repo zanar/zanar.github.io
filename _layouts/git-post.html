@@ -18,8 +18,9 @@ layout: default
             document.getElementById(id).style.display = "none";
         }
     </script>
+    {% assign sortedFn = page.tags | sort %}
     {% assign fn_count = 0 %}
-    {% for fn in page.tags %}
+    {% for fn in sortedFn %}
         {% for rp in site.categories.git %}
             {% if rp.tags contains 'def' and rp.categories contains fn %}
 		{% assign fn_count = fn_count | plus: 1 %}
@@ -33,7 +34,7 @@ layout: default
     
     {% if fn_count > 0 %}
 	related functions:<br/>
-	{% for fn in page.tags %}
+	{% for fn in sortedFn %}
 	    {% for rp in site.categories.git %}
 		{% if rp.tags contains 'def' and rp.categories contains fn %}
 		    <span onmouseenter="show('def_{{ fn }}')" onmouseleave="hide('def_{{ fn }}')" style="margin-right: 20px";>
@@ -58,7 +59,7 @@ layout: default
 	
 	<div id="fn_remind">
 	    <h2>Reminder</h2>
-	    {% for fn in page.tags %}
+	    {% for fn in sortedFn %}
 		{% for rp in site.categories.git %}
 		    {% if rp.tags contains page.level and rp.categories contains fn %}
 			<a href="/git/cmd/{{ rp.title }}.html"><h3 id="r_{{ fn }}">{{ rp.title }}</h3></a>
