@@ -1,7 +1,7 @@
 ---
 layout: git-post
 date: 2017-02-24 18:45:59 +0100
-title: "Cancelling"
+title: "Cancel changes"
 categories: git howto repository
 tags: status checkout reset
 level: basic
