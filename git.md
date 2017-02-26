@@ -5,6 +5,12 @@ permalink: /git/
 ## Git Blog
 
 Just a little help about [Git](https://git-scm.com/) to start well or discover new functionnalities!
+  
+> *Note:*  
+> I'll just talk about commands, tips, walkthroughs and good practices I know and I'm sure about. You may know more about Git than this blog contains...
+
+  
+You will be able find usefull informations in the [Git Manual](https://www.kernel.org/pub/software/scm/git/docs/) or in tutorials on the Web.
 
 --------------------------------
 ### Basic
