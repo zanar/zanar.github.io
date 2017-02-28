@@ -16,31 +16,7 @@ You opened a file for a fix, but you did other (needed) changes unconnected with
 **Do not** put all your changes in a commit with a message like "lots of changes"... use `add -p`!
 The `-p` option, aka `--patch`, allows you to chose which hunks of changes you will add to the stage for the commit.
 
-    $ git add -p <file>
-    $ git status
-    # On branch <branch>
-    # Changes to be commited:
-    #    (use "git reset HEAD <file>..." to unstage)
-    #
-    #        modified: <file>
-    #
-    # Changed but not updated:
-    #    (use "git add <file>..." to update what will be commited)
-    #    (use "git checkout -- <file>..." to discard changes in working directory)
-    #    (commit or discard the untracked or modified content in submodules)
-    #
-    #        modified: <file>
-    #
-    $ git commit -m "<first changes>"
-    $
-    $ git add -p <file>
-    $ git commit -m "<second changes>"
-    $
-    $ git add <file>
-    $ git commit -m "<last changes>"
-    $ git status
-    # On branch master
-    nothing to commit (working directory clean)
+{% include terminal.html cmds="status_12|add_3|status_13|commit_2|empty|add_3|status_13|commit_3|empty|status_3" %}
 
 As you noticed, after a `add -p`, the file is in the `Changes to be commited` section and the `Changed but not updated` section. Obviously. A part of changes is staged, the other part isn't.  
 
@@ -53,6 +29,6 @@ With the `-p` option, `git add` will cut changes in hunks and will ask you if yo
 
 You staged a file with `git add` but you want to remove a change from the stage? `reset` offers you the solution with the `-p` option!
 
-    $ git reset -p HEAD <file>
+{% include terminal.html cmds="reset_4" %}
 
 This is exactly the opposite of `git add -p`, you will be able to chose which hunks you want to remove.

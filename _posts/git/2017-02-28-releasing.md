@@ -14,17 +14,11 @@ Your project is in a stable state and you want to create a release? Let's do it!
 
 You need to have a signature to nicely create a release and signature are stored with gpg. To know the currently stored signatures, run
 
-    $ gpg --list-keys
+{% include terminal.html cmds="gpg_1" %}
 
 If nothing appears or if you can't find your email in the output, you must create your signature with:
 
-    $ gpg --gen-key
-    Please select what kind of key you want:
-    (1) RSA and RSA (default)
-    (2) DSA and Elgamal
-    (3) DSA (sign only)
-    (4) RSA (sign only)
-    Your selection? 
+{% include terminal.html cmds="gpg_2" %}
 
 Chose `1` to create an asymetric signature
 
@@ -95,12 +89,7 @@ Check entered datas, then `O`.
 
 Now check gpg:
 
-    $ gpg --list-keys
-    <gpg file>
-    ------------------------------------
-    pub   2048R/<pub_hash> 2017-02-28 [expires: 2018-02-28]
-    uid                  <your name> (<message>) <<your email>>
-    sub   2048R/<sub_hash> 2017-02-28 [expires: 2018-02-28]
+{% include terminal.html cmds="gpg_3" %}
 
 Allright, gpg is configured.
 
@@ -109,13 +98,11 @@ Allright, gpg is configured.
 Signing release tags allows end users / contributors to verify release tags, but they need your public key. Here is a way to publish it.  
 First, add your public key to a git blob object:
 
-    $ gpg -a --export <pub_hash> | git hash-object -w --stdin
-    <git_key_hash>
+{% include terminal.html cmds="gpg_4" %}
 
 Then, tag this object:
 
-    $ git tag -a maintainer-gpg-pub <git_key_hash> -m "Public gpg maintainer key"
-    $ git push --tags
+{% include terminal.html cmds="tag_5|push_6" %}
 
 Now your public key is shared to anyone who wants to verify a tag.
 
@@ -123,31 +110,15 @@ Now your public key is shared to anyone who wants to verify a tag.
 
 Now you can create a signed tag. But create just one tag by release, no need to create one for each release build. I'll explain why later in this post.
 
-    $ git tag -s <tagname> -m "<message>"
-   
-    You need a passphrase to unlock the secret key for
-    user: "<your name> (<message>) <<your email>>"
-    2048-bit RSA key, ID <pub_hash>, created 2017-02-28
-    
-    Enter passphrase:
+{% include terminal.html cmds="tag_6" %}
 
 It is possible you have an error here:
 
-    $ git tag -s <tagname> -m "<message>"
-    gpg: skipped "<wrong name> <<wrong email>>": secret key not available
-    gpg: signing failed: secret key not available
-    error: gpg failed to sign the data
-    error: unable to sign the tag
+{% include terminal.html cmds="tag_7" %}
 
 In this case, you must use:
 
-    git tag -u <sub_hash> <tagname> -m "<message>"
-
-    You need a passphrase to unlock the secret key for
-    user: "<your name> (<message>) <<your email>>"
-    2048-bit RSA key, ID <pub_hash>, created 2017-02-28
-    
-    Enter passphrase:
+{% include terminal.html cmds="tag_8" %}
 
 
 ### Verify a tag
@@ -159,8 +130,7 @@ This command will generate for you a *build* number, not a *release* number. The
 Here is the format of the generated build number: `<tagname>-<nb>-<hash>` where `<tagname>` is the last annotated tag name (and signed tags are annotated), `<nb>` the number of commits since the tag and `<hash>` the abbreviate used commit hash. If the last signed tag is at `HEAD`, `<nb>` and `<hash>` are ommitted.  
 How to generate this number?
 
-    $ git describe <object>
-    <tagname>-<nb>-<hash>
+{% include terminal.html cmds="describe_1" %}
 
 `<object>` can be `master`, `<branch-name>`, `<tag-name>`, `<commit-hash>`, `HEAD`, `HEAD^`, ... or nothing (which means `HEAD`).
 
@@ -172,8 +142,7 @@ The output is not usable only for creating a release. You can use it as `<object
 
 Now it's time to build your release. You can create a tarball and/or a zip archive of a specific snapshot:
 
-    $ git archive <object> | gzip > `git describe <object>`.tar.gz      # tarball
-    $ git archive <object> --format=zip > `git describe <object>`.zip   # zip
+{% include terminal.html cmds="archive_1|archive_2" %}
 
 where `<object>` can took the same values than for `describe` except that you must specify `HEAD` instead of nothing.
 
@@ -181,22 +150,15 @@ If you look into your project directory, you should show a 'tar.gz' and a 'zip' 
 
 You maybe want to only put the files from a subfolder in archives. It is possible with the `--prefix` option:
 
-    $ git archive <object> --prefix='<path>/' | gzip > `git describe <object>`.tar.gz      # tarball
-    $ git archive <object> --prefix='<path>/' --format=zip > `git describe <object>`.zip   # zip
+{% include terminal.html cmds="archive_3|archive_4" %}
 
 or put the archives in a specific folder:
 
-    $ git archive <object> | gzip > path/to/`git describe <object>`.tar.gz      # tarball
-    $ git archive <object> --format=zip > path/to/`git describe <object>`.zip   # zip
+{% include terminal.html cmds="archive_5|archive_6" %}
 
-I suggest you to create two aliases for `archive`, commands are long:
+I suggest you to create two aliases for `archive`, commands are long. Or create a script like this one (named `git-arc.sh`) in your working directory and run it:
 
-    $ git config --global alias.arc_tar 'archive master | gzip > releases/`git describe master`.tar.gz'
-    $ git config --global alias.arc_zip 'archive master --format=zip > releases/`git describe master`.zip'
-
-or create a script like this one (named `git-arc.sh`) in your working directory and run it:
-
-```
+{% highlight bash linenos %}
 #!/bin/sh
 
 function usage
@@ -274,6 +236,6 @@ fi
 
 echo "Done"
 exit 0
-```
+{% endhighlight %}
 
 and run it into your working directory.

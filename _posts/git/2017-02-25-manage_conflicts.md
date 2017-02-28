@@ -10,24 +10,11 @@ permalink: /git/advanced/manage-conflicts
 
 Sometimes, merging fails.
 
-    $ git merge <branch>
-    Auto-merging <file>
-    CONFLICT (content): Merge conflict in <file>
-    Automatic merge failed; fix conflicts and then commit the result.
+{% include terminal.html cmds="merge_5" %}
 
 The main reason is that changes happened in <branch> and 'master' in <file> at the same location. Then, `merge` breaks before creating the merge commit as `status` can tell you:
 
-    $ git status
-    On branch master
-    You have unmerged paths.
-    (fix conflicts and run "git commit")
-
-    Unmerged paths:
-    (use "git add <file>..." to mark resolution)
-
-	both modified:      <file>
-
-    no changes added to commit (use "git add" and/or "git commit -a")
+{% include terminal.html cmds="status_15" %}
 
 Open unmerged files, you will find something like this:
 

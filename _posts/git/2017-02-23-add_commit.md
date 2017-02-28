@@ -12,85 +12,35 @@ Your project and your repository are created. Now it's time to say to Git which 
 
 First of all, a usefull command to know your local repository state:
 
-    $ git status
+{% include terminal.html cmds="status_1" %}
 
 Git will show you untracked files, modified files and/or changes to be committed. Worst case?
 
-    $ git status
-    # On branch master
-    # Changes to be commited:
-    #    (use "git reset HEAD <file>..." to unstage)
-    #
-    #        modified: <file_1>
-    #        modified: <file_2>
-    #
-    # Changed but not updated:
-    #    (use "git add <file>..." to update what will be commited)
-    #    (use "git checkout -- <file>..." to discard changes in working directory)
-    #    (commit or discard the untracked or modified content in submodules)
-    #        modified: <file_1>
-    #        modified: <file_3>
-    #
-    # Untracked files:
-    #    (use "git add <file>..." to include in what will be commited)
-    #
-    #        <file_4>
-    #        <file_5>
+{% include terminal.html cmds="status_2" %}
 
-The `Untracked files` section shows you all files found in your local repository which doesn't exist in remote repository.
-The `Changed but not updated` section shows you all locally modified files which won't be commited
-The `Changes to be commited` section shows you modified files which will be commited
+The `Untracked files` section shows you all files found in your local repository which doesn't exist in remote repository.  
+The `Changed but not updated` section shows you all locally modified files which won't be commited.  
+The `Changes to be commited` section shows you modified files which will be commited.
 
-You surely noticed that &lt;file_1&gt; is found in `Changed but not updated` **and** `Changes to be commited`. Yes, it is possible. Remember that Git tracks **changes in files**, not files. This status appears when you register a first modification then you modify again the same file.
+You surely noticed that `<file_1>` is found in `Changed but not updated` **and** `Changes to be commited`. Yes, it is possible. Remember that Git tracks **changes in files**, not files. This status appears when you register a first modification then you modify again the same file.
 
 Now, our goal is to see:
 
-    $ git status
-    # On branch master
-    nothing to commit (working directory clean)
+{% include terminal.html cmds="status_3" %}
 
 and here is the walkthrough:
 
 Say to git `I want you to track changes in these files`:
 
-    $ git add <file_4> <file_5>
-    $ git status
-    # On branch master
-    # Changes to be commited:
-    #    (use "git reset HEAD <file>..." to unstage)
-    #
-    #        modified: <file_1>
-    #        modified: <file_2>
-    #        modified: <file_4>
-    #        modified: <file_5>
-    #
-    # Changed but not updated:
-    #    (use "git add <file>..." to update what will be commited)
-    #    (use "git checkout -- <file>..." to discard changes in working directory)
-    #    (commit or discard the untracked or modified content in submodules)
-    #        modified: <file_1>
-    #        modified: <file_3>
+{% include terminal.html cmds="add_1|status_4" %}
 
 Say to Git `I want you to register changes in these files`:
 
-    $ git add <file_1> <file_3>
-    $ git status
-    # On branch master
-    # Changes to be commited:
-    #    (use "git reset HEAD <file>..." to unstage)
-    #
-    #        modified: <file_1>
-    #        modified: <file_2>
-    #        modified: <file_3>
-    #        modified: <file_4>
-    #        modified: <file_5>
+{% include terminal.html cmds="add_2|status_5" %}
 
 Then, `I want you to save all recorded changes`:
 
-    $ git commit -m "message that explain the commit"
-    $ git status
-    # On branch master
-    nothing to commit (working directory clean)
+{% include terminal.html cmds="commit_1|status_3" %}
 
 Now, all your changes are saved in a commit, but anyone except you knows about that.
 > This is the main difference between Git and CVS/SVN: committing something doesn't share changes.

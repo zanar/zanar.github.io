@@ -1,0 +1,130 @@
+{% assign cmds = include.cmds | split: '|' %}
+
+{% assign code = "" %}
+
+{% for c in cmds %}
+    {% for cmd in site.data.cmds %}
+	{% if cmd.name == c %}
+	    {% assign code = code | append: "$ " | append: cmd.in | append: "<br/>" %}
+	    
+	    {% if cmd.in contains "git status" %}
+		{% if cmd.branch | size > 0 %}
+		    {% assign code = code | append: "On branch " | append: cmd.branch | append: "
+" %}
+		    {% if cmd.staged | size > 0 %}
+			{% assign code = code | append: 'Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)' | append: "
+
+" %}
+			{% for file in cmd.staged %}
+			    {% assign code = code | append: '<span style="color: rgba(0, 200, 0, 0.8);">' %}
+			    {% assign code = code | append: "        modified:    &lt;" | append: file | append: "&gt;</span>
+" %}
+			{% endfor %}
+			{% assign code = code | append: "
+" %}
+		    {% endif %}
+		    {% if cmd.edited | size > 0 %}
+			{% assign code = code | append: 'Changes not staged for commit:
+  (use "git add/rm &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)' | append: "
+
+" %}
+			{% for file in cmd.edited %}
+			    {% assign code = code | append: '<span style="color: rgba(255, 0, 0, 0.8);">' %}
+			    {% assign code = code | append: "        modified:    &lt;" | append: file | append: "&gt;</span>
+" %}
+			{% endfor %}
+			{% assign code = code | append: "
+" %}
+		    {% endif %}
+		    {% if cmd.untracked | size > 0 %}
+			{% assign code = code | append: 'Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)' | append: "
+
+" %}
+			{% for file in cmd.untracked %}
+			    {% assign code = code | append: '<span style="color: rgba(255, 0, 0, 0.8);">' %}
+			    {% assign code = code | append: "        modified:    &lt;" | append: file | append: "&gt;</span>
+" %}
+			{% endfor %}
+			{% assign code = code | append: "
+" %}
+		    {% endif %}
+		    {% assign staged_size = cmd.staged | size %}
+		    {% assign edited_size = cmd.edited | size %}
+		    {% assign untrak_size = cmd.untracked | size %}
+		    {% if staged_size == 0 and edited_size == 0 and untrak_size == 0 %}
+			{% assign code = code | append: "nothing to commit (working directory clean)
+" %}
+		    {% endif %}
+		{% else %}
+		    {% for out in cmd.out %}
+			{% assign code = code | append: out | append: "
+" %}
+		    {% endfor %}
+		{% endif %}
+		
+	    {% elsif cmd.in contains "git log" %}
+		{% for out in cmd.out %}
+		    {% assign code = code | append: '<span style="color: rgba(232, 180, 0, 0.8);">' %}
+		    {% assign code = code | append: "commit " | append: out.commit | append: "</span>
+" %}
+		    {% assign code = code | append: "Author: author &lt;author (at) mail.com&gt;
+Date: &lt;commit date&gt;
+
+" %}
+		    {% assign code = code | append: "        " | append: out.msg | append: "
+
+" %}
+		{% endfor %}
+
+	    {% elsif cmd.in contains "git diff --stat" %}
+		{% assign p = 0 %}
+		{% assign l = 0 %}
+		{% assign tc = 0 %}
+		{% assign nf = 0 %}
+		{% for file in cmd.files %}
+		    {% assign nf = nf | plus: 1 %}
+		    {% assign fc = file.plus | plus: file.less %}
+		    {% assign code = code | append: "&lt;" | append: file.fname | append: "&gt; | " %}
+		    {% assign code = code | append: fc | append: " " %}
+		    
+		    {% assign code = code | append: '<span style="color: rgba(0, 200, 0, 0.8)">' %}
+		    {% assign i = 0 %}
+		    {% for i in (1..file.plus) %}
+			{% assign code = code | append: '+' %}
+		    {% endfor %}
+		    {% assign code = code | append: '</span><span style="color: rgba(255, 0, 0, 0.8)">' %}
+		    {% for i in (1..file.less) %}
+			{% assign code = code | append: '-' %}
+		    {% endfor %}
+		    {% assign code = code | append: "</span><br/>" %}
+		    
+		    {% assign p = p | plus: file.plus %}
+		    {% assign l = l | plus: file.less %}
+		    {% assign tc = tc | plus: fc %}
+		{% endfor %}
+		{% if nf != 0 %}
+		    {% assign code = code | append: nf | append: " files changed" %}
+		    {% if p > 0 %}
+			{% assign code = code | append: ", " | append: p | append: " insertions(+)" %}
+		    {% endif %}
+		    {% if l > 0 %}
+			{% assign code = code | append: ", " | append: l | append: " deletions(-)" %}
+		    {% endif %}
+		{% endif %}
+		
+	    {% else %}
+		{% for out in cmd.out %}
+		    {% assign code = code | append: out | append: "
+" %}
+		{% endfor %}
+	    {% endif %}
+	{% endif %}
+    {% endfor %}
+{% endfor %}
+
+<div class="highlighter-rouge">
+    <pre class="highlight"><code>{{ code }}</code></pre>
+</div>

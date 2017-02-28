@@ -1,0 +1,620 @@
+- name: empty
+  in: ""
+
+- name: cfg_1
+  in: git config --global user.name &lt;your_name&gt;
+  
+- name: cfg_2
+  in: git config --global user.email &lt;your@email.com&gt;
+  
+- name: cfg_3
+  in: git config --global color.ui auto
+  
+- name: cfg_4
+  in: git config --global status.showUntrackedFiles all
+  
+- name: cfg_5
+  in: git config --global core.whitespace -trailing-space
+  
+- name: cfg_6
+  in: git config --global diff.mnemonicPrefix true
+  
+- name: cfg_7
+  in: git config --global log.abbrevCommit true
+  
+- name: cfg_8
+  in: git config --global alias.hist 'log --pretty=format:\"%h - %d %s (%cr) <%an>\" --graph --date=relative --all'
+  
+- name: cfg_9
+  in: git config --global alias.hist 'log --graph --date=relative --all --pretty=format:\"%C(cyan)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"'
+
+- name: init_1
+  in: git init
+
+- name: init_2
+  in: git clone <path/to/remote.git> .
+
+- name: status_1
+  in: git status
+
+- name: status_2
+  in: git status
+  branch: master
+  staged: 
+    - file_1
+    - file_2
+  edited:
+    - file_1
+    - file_3
+  untracked:
+    - file_4
+    - file_5
+
+- name: status_3
+  in: git status
+  branch: master
+
+- name: add_1
+  in: git add &lt;file_4&gt; &lt;file_5&gt;
+
+- name: status_4
+  in: git status
+  branch: master
+  staged:
+    - file_1
+    - file_2
+    - file_4
+    - file_5
+  edited:
+    - file_1
+    - file_3
+
+- name: add_2
+  in: git add &lt;file_1&gt; &lt;file_3&gt;
+
+- name: status_5
+  in: git status
+  branch: master
+  staged:
+    - file_1
+    - file_2
+    - file_3
+    - file_4
+    - file_5
+
+- name: commit_1
+  in: git commit -m "message that explain the commit"
+
+- name: log_1
+  in: git log
+  out:
+    - commit: 7950659dc9ef7f2b50b18010622299c508bfdfc3
+      msg: commit message
+    - commit: 221243eb14415fdda82f250b687203a9b86e7f08
+      msg: other message
+    - commit: f491239170cb1463c7c3cd970862d6de636ba787
+      msg: message
+
+- name: log_2
+  in: git log
+  out:
+    - commit: 7950659
+      msg: commit message
+    - commit: 221243e
+      msg: other message
+    - commit: f491239
+      msg: message
+
+- name: hist_1
+  in: git hist
+  out:
+    - '* <span style="color: rgba(19, 233, 241, 0.8)">7950659</span> - <span style="color: rgba(232, 180, 0, 0.8)">(HEAD, master)</span> commit message <span style="color: rgba(25, 200, 25, 0.8)">(10 minutes ago)</span> <span style="color: rgba(100, 100, 255, 0.8)">&lt;author&gt;</span>'
+    - '<span style="color: rgba(200, 0, 0, 0.8)">|</span> * <span style="color: rgba(19, 233, 241, 0.8)">41ab9d8</span> - <span style="color: rgba(232, 180, 0, 0.8)">(my_branch)</span> branch commit message <span style="color: rgba(25, 200, 25, 0.8)">(15 minutes ago)</span> <span style="color: rgba(100, 100, 255, 0.8)">&lt;author2&gt;</span>'
+    - '<span style="color: rgba(200, 0, 0, 0.8)">|/</span>'
+    - '* <span style="color: rgba(19, 233, 241, 0.8)">221243e</span> - other message <span style="color: rgba(25, 200, 25, 0.8)">(5 hours ago)</span> <span style="color: rgba(100, 100, 255, 0.8)">&lt;author&gt;</span>'
+    - '* <span style="color: rgba(19, 233, 241, 0.8)">f491239</span> - message <span style="color: rgba(25, 200, 25, 0.8)">(8 hours ago)</span> <span style="color: rgba(100, 100, 255, 0.8)">&lt;author&gt;</span>'
+
+- name: status_6
+  in: git status
+  branch: master
+  staged:
+    - file_1
+    - file_2
+    - file_3
+
+- name: reset_1
+  in: git reset HEAD &lt;file_1&gt;
+
+- name: status_7
+  in: git status
+  branch: master
+  staged:
+    - file_2
+    - file_3
+  edited:
+    - file_1
+
+- name: reset_2
+  in: git reset HEAD &lt;file_1&gt; &lt;file_2&gt;
+
+- name: status_8
+  in: git status
+  branch: master
+  staged:
+    - file_3
+  edited:
+    - file_1
+    - file_2
+
+- name: reset_3
+  in: git reset HEAD
+
+- name: status_9
+  in: git status
+  branch: master
+  edited:
+    - file_1
+    - file_2
+    - file_3
+
+- name: checkout_1
+  in: git checkout &lt;file_1&gt;
+
+- name: status_10
+  in: git status
+  branch: master
+  edited:
+    - file_2
+    - file_3
+
+- name: checkout_2
+  in: git checkout &lt;file_1&gt; &lt;file_2&gt;
+
+- name: status_11
+  in: git status
+  branch: master
+  edited:
+    - file_3
+
+- name: checkout_3
+  in: git checkout master
+
+- name: diff_1
+  in: git diff --stat
+  files:
+    - fname: file_1
+      plus: 1
+      less: 1
+    - fname: file_2
+      plus: 4
+      less: 6
+    - fname: file_3
+      plus: 3
+      less: 1
+
+- name: diff_2
+  in: git diff
+
+- name: diff_3
+  in: git diff &lt;path&gt;
+
+- name: diff_4
+  in: git diff &lt;hash_1&gt;..&lt;hash_2&gt;
+
+- name: add_3
+  in: git add -p &lt;file&gt;
+
+- name: status_12
+  in: git status
+  branch: master
+  edited:
+    - file
+
+- name: status_13
+  in: git status
+  branch: master
+  staged:
+    - file
+  edited:
+    - file
+
+- name: commit_2
+  in: git commit -m "first changes"
+
+- name: commit_3
+  in: git commit -m "second changes"
+
+- name: rebase_1
+  in: git rebase -i &lt;hash&gt;^
+  out:
+    - pick &lt;hash&gt;  msg commit 1
+    - pick a83dc4e msg commit 2
+    - pick da0371b msg commit 3
+    - pick b631630 msg commit 4
+    - ""
+    - "# Rebase 2248033..fee2037 into 2248033"
+    - "#"
+    - "# Commands:"
+    - "#  p, pick = use commit"
+    - "#  r, reword = use commit, but edit the commit message"
+    - "#  e, edit = use commit, but stop for amending"
+    - "#  s, squash = use commit, but meld into previous commit"
+    - '#  f, fixup = like "squash", but discard this commit''s log message'
+    - "#  x, exec = run command (the rest of the line) using shell"
+    - "#"
+    - "# These lines can be re-ordered; they are executed from top to bottom."
+    - "#"
+    - "# If you remove a line here THAT COMMIT WILL BE LOST."
+    - "#"
+    - "# However, if you remove everything, the rebase will be aborted."
+    - "#"
+    - "# Note that empty commits are commented out"
+
+- name: stash_1
+  in: git stash save
+  out:
+    - 'Saved working directory and index state "WIP on master: &lt;hash&gt; &lt;last_commit_msg&gt;"'
+    - HEAD is now at &lt;hash&gt; &lt;last_commit_msg&gt;
+    - '(To restore them type "git stash apply")'
+
+- name: status_14
+  in: git status
+  branch: master
+  untracked:
+    - file_4
+    - file_5
+
+- name: stash_2
+  in: git stash save -u
+  out:
+    - 'Saved working directory and index state "WIP on master: &lt;hash&gt; &lt;last_commit_msg&gt;"'
+    - HEAD is now at &lt;hash&gt; &lt;last_commit_msg&gt;
+    - '(To restore them type "git stash apply")'
+
+- name: remote_1
+  in: git remote
+  out:
+    - origin
+
+- name: remote_2
+  in: git remote -v
+  out:
+    - 'origin http://remote/repository/url (fetch)'
+    - 'origin http://remote/repository/url (push)'
+
+- name: remote_3
+  in: git remote add &lt;shortname&gt; &lt;url&gt;
+
+- name: remote_4
+  in: git remote -v
+  out:
+    - 'origin http://remote/repository/url (fetch)'
+    - 'origin http://remote/repository/url (push)'
+    - '&lt;shortname&gt; &lt;url&gt; (fetch)'
+    - '&lt;shortname&gt; &lt;url&gt; (push)'
+
+- name: remote_5
+  in: git remote show origin
+  out:
+    - '* remote origin'
+    - '  Fetch URL: &lt;url&gt;'
+    - '  Push  URL: &lt;url&gt;'
+    - '  HEAD branch: master'
+    - '  Remote branches:'
+    - '    master                               tracked'
+    - '    &lt;branch&gt;                             tracked'
+    - "  Local branch configured for 'git pull':"
+    - '    master merges with remote master'
+    - "  Local ref configured for 'git push':"
+    - '    master pushes to master (up to date)'
+
+- name: push_1
+  in: git push origin master
+  out:
+    - 'To /tmp/remote'
+    - '  ! [rejected] master -> origin/master (fetch first)'
+    - "error: failed to push some refs to '/tmp/remote'"
+    - 'hint: Updates were rejected because the remote contains work'
+    - 'hint: that you do not have locally. This is usually caused by'
+    - 'hint: another repository pushing to the same ref. You may want'
+    - 'hint: to first integrate the remote changes'
+    - "hint: (e.g., 'git pull ...') before pushing again."
+    - "hint: See the 'Note about fast-forwards' in 'git push --help'"
+    - 'hint: for details.'
+
+- name: tag_1
+  in: git tag &lt;tagname&gt;
+
+- name: tag_2
+  in: git tag &lt;tagname&gt; -m "message"
+
+- name: tag_3
+  in: git tag -d &lt;tagname&gt;
+  
+- name: tag_4
+  in: git tag
+
+- name: checkout_4
+  in: git checkout &lt;tagname&gt;
+
+- name: fetch_1
+  in: git fetch &lt;remote_name&gt;
+  
+- name: pull_1
+  in: git pull --rebase=preserve
+
+- name: fetch_2
+  in: git fetch
+
+- name: merge_1
+  in: git merge origin/master
+
+- name: cfg_10
+  in: git config --global pull.rebase preserve
+
+- name: push_2
+  in: git push &lt;remote_name&gt; master
+
+- name: push_3
+  in: git push --tags origin master
+
+- name: remote_6
+  in: git remote rename &lt;old-remote-name&gt; &lt;new-remote-name&gt;
+
+- name: remote_7
+  in: git remote remove &lt;remote-name&gt;
+
+- name: branch_1
+  in: git branch &lt;branch_name&gt;
+  
+- name: checkout_5
+  in: git checkout &lt;branch_name&gt;
+
+- name: checkout_6
+  in: git checkout -b &lt;branch_name&gt;
+
+- name: branch_2
+  in: 'git branch          # local'
+
+- name: branch_3
+  in: 'git branch -r       # remote'
+
+- name: branch_4
+  in: 'git branch --all    # all'
+
+- name: merge_2
+  in: git merge --no-ff experimental
+  out:
+    - "# or"
+
+- name: merge_3
+  in: 'git merge --no-ff experimental -m "merge commit message"'
+
+- name: merge_4
+  in: git merge experimental
+
+- name: rebase_2
+  in: git rebase master experimental
+  
+- name: checkout_7
+  in: git checkout experimental
+
+- name: branch_5
+  in: git branch -D &lt;name&gt;
+
+- name: reset_4
+  in: git reset -p HEAD &lt;file&gt;
+
+- name: commit_4
+  in: 'git commit --amend -m "message"'
+
+- name: reset_5
+  in: git reset --soft HEAD^
+
+- name: rebase_3
+  in: git rebase -i &lt;hash&gt;^
+
+- name: rebase_4
+  in: git rebase --continue
+
+- name: rebase_5
+  in: git rebase --continue
+  out:
+    - Successfully rebased and updated refs/heads/master.
+
+- name: rebase_6
+  in: git rebase --abort
+
+- name: merge_5
+  in: git merge &lt;branch&gt;
+  out:
+    - 'Auto-merging &lt;file&gt;'
+    - 'CONFLICT (content): Merge conflict in &lt;file&gt;'
+    - 'Automatic merge failed; fix conflicts and then commit the result.'
+
+- name: status_15
+  in: git status
+  out:
+    - On branch master
+    - You have unmerged paths.
+    - '(fix conflicts and run "git commit")'
+    - ''
+    - 'Unmerged paths:'
+    - '(use "git add &lt;file&gt;..." to mark resolution)'
+    - ''
+    - '          both modified:      &lt;file&gt;'
+    - ''
+    - 'no changes added to commit (use "git add" and/or "git commit -a")'
+
+- name: checkout_8
+  in: git checkout -b &lt;local_branch&gt; &lt;remote&gt;/&lt;remote_branch&gt;
+  out:
+    - "Branch &lt;local_branch&gt; set up to track remote branch &lt;remote_branch&gt; from &lt;remote&gt;."
+    - "Switched to a new branch '&lt;local_branch&gt;'"
+
+- name: checkout_9
+  in: git checkout --track &lt;remote&gt;/&lt;branch&gt;
+  out:
+    - "Branch &lt;branch&gt; set up to track remote branch &lt;branch&gt; from &lt;remote&gt;."
+    - "Switched to a new branch '&lt;branch&gt;'"
+
+- name: push_4
+  in: git push &lt;remote&gt; &lt;branch&gt;
+
+- name: pull_2
+  in: git pull --rebase=prevent &lt;branch&gt;
+
+- name: push_5
+  in: git push origin --delete &lt;branch&gt;
+
+- name: stash_3
+  in: git stash list
+  out:
+    - 'stash@{0}: WIP on master: &lt;hash_1&gt; &lt;commit msg&gt;'
+    - 'stash@{1}: WIP on master: &lt;hash_2&gt; &lt;commit msg&gt;'
+
+- name: stash_4
+  in: git stash apply
+
+- name: stash_5
+  in: git stash pop
+
+- name: stash_6
+  in: git stash apply stash@{x}
+
+- name: stash_7
+  in: git stash pop stash@{x}
+
+- name: stash_8
+  in: git stash show
+
+- name: stash_9
+  in: git stash show stash@{x}
+
+- name: stash_10
+  in: git stash drop
+
+- name: stash_11
+  in: git stash drop stash@{x}
+
+- name: stash_12
+  in: git stash branch &lt;name&gt;
+  out:
+    - 'M       &lt;file_1&gt;'
+    - 'M       &lt;file_2&gt;'
+    - "Switched to a new branch '&lt;name&gt;'"
+    - 'On branch &lt;name&gt;'
+    - 'Changes to be committed:'
+    - '(use "git reset HEAD &lt;file&gt;..." to unstage)'
+    - ''
+    - '    modified:   &lt;file_1&gt;'
+    - ''
+    - "Changes not staged for commit:"
+    - '(use "git add &lt;file&gt;..." to update what will be committed)'
+    - '(use "git checkout -- &lt;file&gt;..." to discard changes in working directory)'
+    - ''
+    - '    modified:   &lt;file_2&gt;'
+    - ''
+    - 'Dropped refs/stash@{0} (&lt;hash&gt;)'
+
+- name: patch_1
+  in: git format-patch -{x} HEAD --stdout &gt; &lt;name&gt;.patch
+
+- name: patch_2
+  in: git format-patch &lt;hash&gt;^ --stdout &gt; &lt;name&gt;.patch
+
+- name: patch_3
+  in: git format-patch master --stdout &gt; &lt;name&gt;.patch
+
+- name: apply_1
+  in: git apply --stat &lt;name&gt;.patch
+
+- name: apply_2
+  in: git apply --check &lt;name&gt;.patch
+
+- name: am_1
+  in: git am --signoff -k &lt; &lt;name&gt;.patch
+
+- name: gpg_1
+  in: gpg --list-keys
+
+- name: gpg_2
+  in: gpg --gen-key
+  out:
+    - 'Please select what kind of key you want:'
+    - '(1) RSA and RSA (default)'
+    - '(2) DSA and Elgamal'
+    - '(3) DSA (sign only)'
+    - '(4) RSA (sign only)'
+    - 'Your selection?'
+
+- name: gpg_3
+  in: gpg --list-keys
+  out:
+    - '&lt;gpg file&gt;'
+    - '------------------------------------'
+    - 'pub   2048R/&lt;pub_hash&gt; 2017-02-28 [expires: 2018-02-28]'
+    - 'uid                  &lt;your name&gt; (&lt;message&gt;) &lt;&lt;your email&gt;&gt;'
+    - 'sub   2048R/&lt;sub_hash&gt; 2017-02-28 [expires: 2018-02-28]'
+
+- name: gpg_4
+  in: gpg -a --export &lt;pub_hash&gt; | git hash-object -w --stdin
+  out:
+    - '&lt;git_key_hash&gt;'
+
+- name: tag_5
+  in: 'git tag -a maintainer-gpg-pub &lt;git_key_hash&gt; -m "Public gpg maintainer key"'
+
+- name: push_6
+  in: git push --tags
+
+- name: tag_6
+  in: 'git tag -s &lt;tagname&gt; -m "&lt;message&gt;"'
+  out:
+    - ''
+    - 'You need a passphrase to unlock the secret key for'
+    - 'user: "&lt;your name&gt; (&lt;message&gt;) &lt;&lt;your email&gt;&gt;"'
+    - '2048-bit RSA key, ID &lt;pub_hash&gt;, created 2017-02-28'
+    - ''
+    - 'Enter passphrase:'
+
+- name: tag_7
+  in: 'git tag -s &lt;tagname&gt; -m "&lt;message&gt;"'
+  out:
+    - 'gpg: skipped "&lt;wrong name&gt; &lt;&lt;wrong email&gt;&gt;": secret key not available'
+    - 'gpg: signing failed: secret key not available'
+    - 'error: gpg failed to sign the data'
+    - 'error: unable to sign the tag'
+
+- name: tag_8
+  in: 'git tag -u &lt;sub_hash&gt; &lt;tagname&gt; -m "&lt;message&gt;"'
+  out:
+    - ''
+    - 'You need a passphrase to unlock the secret key for'
+    - 'user: "&lt;your name&gt; (&lt;message&gt;) &lt;&lt;your email&gt;&gt;"'
+    - '2048-bit RSA key, ID &lt;pub_hash&gt;, created 2017-02-28'
+    - ''
+    - 'Enter passphrase:'
+
+- name: describe_1
+  in: git describe &lt;object&gt;
+  out:
+    - '&lt;tagname&gt;-&lt;nb&gt;-&lt;hash&gt;'
+
+- name: archive_1
+  in: git archive &lt;object&gt; | gzip &gt; `git describe &lt;object&gt;`.tar.gz
+
+- name: archive_2
+  in: git archive &lt;object&gt; --format=zip &gt; `git describe &lt;object&gt;`.zip
+
+- name: archive_3
+  in: git archive &lt;object&gt; --prefix='&lt;path&gt;/' | gzip &gt; `git describe &lt;object&gt;`.tar.gz
+
+- name: archive_4
+  in: git archive &lt;object&gt; --prefix='&lt;path&gt;/' --format=zip &gt; `git describe &lt;object&gt;`.zip
+
+- name: archive_5
+  in: git archive &lt;object&gt; | gzip &gt; path/to/`git describe &lt;object&gt;`.tar.gz
+
+- name: archive_6
+  in: git archive &lt;object&gt; --format=zip &gt; path/to/`git describe &lt;object&gt;`.zip

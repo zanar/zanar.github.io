@@ -25,9 +25,40 @@ code {
 
 pre code {
     font-family: monospace;
-    color:#000;
+    color: rgba(255, 255, 255, 0.8);
     font-size:14px;
-    background-color: #fff;
+    background-color: transparent;
     padding-left: 0px;
     padding-right: 0px;
+}
+
+pre.highlight {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+figure pre {
+    padding: 0px;
+    margin-bottom: 0px;
+    border: 0;
+}
+
+figure table {
+    margin-bottom: 0px;
+    border: 0;
+}
+
+pre td {
+    background-color: transparent;
+}
+
+figure td pre {
+    border: 0;
+}
+
+.highlight table td {
+    padding: 5px 10px;
+}
+
+.gutter {
+    border-right: 1px solid #D7D8C8;
 }
