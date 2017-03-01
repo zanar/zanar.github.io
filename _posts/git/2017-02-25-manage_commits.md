@@ -34,7 +34,7 @@ This way, you will keep the changes in file and you can remove file(s) content f
 ### Modify an older commit / multiples commits
 
 Usefull to clean up the history, you also can use this method to add a change to a previous commit.  
-First, find the hash of the commit to edit with `git log` or its aliases `git hist` or `git lg` I proposed to you.
+First, find the hash of the commit to edit with `git log` or its alias `git hist` I proposed to you.
 
 Then, go back in history before this commit with `rebase` (to keep changes through the nexts commits):
 
@@ -45,7 +45,7 @@ A prompt will be opened to able you to chose when `rebase` must stop to edit com
 {% include terminal.html cmds="rebase_1" %}
 
 On the top, replace `pick` by the command (probably `edit`) needed to modify the commit on the lines you want to change something in the commit.  
-Once you selected your commits, hit `Ctrl + X`, `y` and `Enter` to start the rebase.
+Once you selected your commits, hit `Ctrl + X`, `y` and `Return` to start the rebase.
 
 If you put an `edit`, the term would show you:
     Stopped at <hash>... <message>

@@ -12,7 +12,7 @@ Your project is in a stable state and you want to create a release? Let's do it!
 
 ### First step: create a signature
 
-You need to have a signature to nicely create a release and signature are stored with gpg. To know the currently stored signatures, run
+You need to have a signature to nicely create a release and signatures are stored by gpg. To know the currently stored signatures, run
 
 {% include terminal.html cmds="gpg_1" %}
 
@@ -146,9 +146,9 @@ Now it's time to build your release. You can create a tarball and/or a zip archi
 
 where `<object>` can took the same values than for `describe` except that you must specify `HEAD` instead of nothing.
 
-If you look into your project directory, you should show a 'tar.gz' and a 'zip' archives with the same name. This is the archives you just created!
+If you look into your project directory, you should show a 'tar.gz' and a 'zip' archives with the same name. There are the archives you just created!
 
-You maybe want to only put the files from a subfolder in archives. It is possible with the `--prefix` option:
+You maybe want to only put the files from a specific subfolder in archives. It is possible with the `--prefix` option:
 
 {% include terminal.html cmds="archive_3|archive_4" %}
 
@@ -237,5 +237,3 @@ fi
 echo "Done"
 exit 0
 {% endhighlight %}
-
-and run it into your working directory.

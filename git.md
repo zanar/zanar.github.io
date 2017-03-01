@@ -46,7 +46,7 @@ You will be able find usefull informations in the [Git Manual](https://www.kerne
 </ol>
 
 --------------------------------
-### Commandes
+### Commands
 
   {% assign sortedPosts = site.categories.git | sort: 'title' %}
   {% assign def_count = 0%}

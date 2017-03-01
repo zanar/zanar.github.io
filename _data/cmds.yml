@@ -618,3 +618,9 @@
 
 - name: archive_6
   in: git archive &lt;object&gt; --format=zip &gt; path/to/`git describe &lt;object&gt;`.zip
+
+- name: status_16
+  in: git status
+  branch: master
+  staged:
+    - file

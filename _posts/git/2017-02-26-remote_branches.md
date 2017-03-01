@@ -32,7 +32,7 @@ To download datas from / upload datas to a remote branch, you can use the same c
 
 {% include terminal.html cmds="push_4|pull_2" %}
 
-For the `pull` command, you can avoid the `--rebase` option if you set the `pull.rebase` config at `prevent`.
+For the `pull` command, you can avoid the `--rebase` option if you set the `pull.rebase` config at `prevent` with the `--no-rebase` option.
 
 ### Delete a remote branch
 

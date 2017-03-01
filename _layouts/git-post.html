@@ -33,19 +33,19 @@ layout: default
     {% include prevnext.html order=0 %}
     
     {% if fn_count > 0 %}
-	related functions:<br/>
-	{% for fn in sortedFn %}
-	    {% for rp in site.categories.git %}
-		{% if rp.tags contains 'def' and rp.categories contains fn %}
-		    <span onmouseenter="show('def_{{ fn }}')" onmouseleave="hide('def_{{ fn }}')" style="margin-right: 20px";>
-			<a href="#r_{{ fn }}">{{ rp.title }}</a>
-		    </span>
-		    <div id="def_{{ fn }}" style="display: none; border: 1px solid #cccccc; padding: 5px; z-index: 10; position: fixed; min-width: 100px; max-width: 400px; background-color: silver;">
-			{{ rp.content | markdownify }}
-		    </div>
-		{% endif %}
-	    {% endfor %}
-	{% endfor %}
+        related commands:<br/>
+        {% for fn in sortedFn %}
+            {% for rp in site.categories.git %}
+                {% if rp.tags contains 'def' and rp.categories contains fn %}
+                    <span onmouseenter="show('def_{{ fn }}')" onmouseleave="hide('def_{{ fn }}')" style="margin-right: 20px";>
+                    <a href="#r_{{ fn }}">{{ rp.title }}</a>
+                    </span>
+                    <div id="def_{{ fn }}" style="display: none; border: 1px solid #cccccc; padding: 5px; z-index: 10; position: fixed; min-width: 100px; max-width: 400px; background-color: silver;">
+                    {{ rp.content | markdownify }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
     {% endif %}
     
     <div id="post_content" style="border-top: 1px solid #cccccc; padding-top: 15px; margin-top: 10px; border-bottom: 1px solid #cccccc; padding-bottom: 15px; margin-bottom: 10px;">
@@ -53,22 +53,22 @@ layout: default
     </div>
     
     {% if fn_count == 0 %}
-	{% include prevnext.html order=3 %}
+        {% include prevnext.html order=3 %}
     {% else %}
-	{% include prevnext.html order=1 %}
+        {% include prevnext.html order=1 %}
 	
-	<div id="fn_remind">
-	    <h2>Reminder</h2>
-	    {% for fn in sortedFn %}
-		{% for rp in site.categories.git %}
-		    {% if rp.tags contains page.level and rp.categories contains fn %}
-			<a href="/git/cmd/{{ rp.title }}.html"><h3 id="r_{{ fn }}">{{ rp.title }}</h3></a>
-			<div>{{ rp.content | markdownify }}</div>
-		    {% endif %}
-		{% endfor %}
-	    {% endfor %}
-	</div>
+        <div id="fn_remind">
+            <h2>Reminder</h2>
+            {% for fn in sortedFn %}
+                {% for rp in site.categories.git %}
+                    {% if rp.tags contains page.level and rp.categories contains fn %}
+                        <a href="/git/cmd/{{ rp.title }}.html"><h3 id="r_{{ fn }}">{{ rp.title }}</h3></a>
+                        <div>{{ rp.content | markdownify }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
 	
-	{% include prevnext.html order=2 %}
+        {% include prevnext.html order=2 %}
     {% endif %}
 </div>

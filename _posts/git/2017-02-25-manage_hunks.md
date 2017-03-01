@@ -16,7 +16,7 @@ You opened a file for a fix, but you did other (needed) changes unconnected with
 **Do not** put all your changes in a commit with a message like "lots of changes"... use `add -p`!
 The `-p` option, aka `--patch`, allows you to chose which hunks of changes you will add to the stage for the commit.
 
-{% include terminal.html cmds="status_12|add_3|status_13|commit_2|empty|add_3|status_13|commit_3|empty|status_3" %}
+{% include terminal.html cmds="status_12|add_3|status_13|commit_2|empty|add_3|status_16|commit_3|empty|status_3" %}
 
 As you noticed, after a `add -p`, the file is in the `Changes to be commited` section and the `Changed but not updated` section. Obviously. A part of changes is staged, the other part isn't.  
 

@@ -12,11 +12,11 @@ Sometimes, merging fails.
 
 {% include terminal.html cmds="merge_5" %}
 
-The main reason is that changes happened in <branch> and 'master' in <file> at the same location. Then, `merge` breaks before creating the merge commit as `status` can tell you:
+The main reason is that changes happened in &lt;branch&gt; and 'master' in &lt;file&gt; at the same location. Then, `merge` breaks before creating the merge commit as `status` can tell you:
 
 {% include terminal.html cmds="status_15" %}
 
-Open unmerged files, you will find something like this:
+Open unmerged files, you will find something like this somewhere in the code:
 
     <<<<<<< HEAD:<file>
     modif_1
@@ -26,6 +26,7 @@ Open unmerged files, you will find something like this:
 
 Replace the bloc with the right change, and close your editor (this action is named "conflict resolution"). After resolving each conflicts in each files, run `git add` on each files then `git commit`. This will show you:
 
+    $ git commit
     Merge branch '<branch>'
 
     Conflicts:
